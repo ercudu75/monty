@@ -16,9 +16,9 @@
 -   What is the proper way to use global variables
 ### Explanation
 
-**Stack**
+**Stack**:
 ![stack_implementation](https://github.com/ercudu75/monty/assets/75138084/1358b695-6901-4fdd-97bd-999584f7fee6)
 
-**Queue
+**Queue**:
 ![queue_implementation](https://github.com/ercudu75/monty/assets/75138084/05a38438-676c-4aaf-bd90-3e3b2921c1f7)
 
