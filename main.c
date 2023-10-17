@@ -27,7 +27,6 @@ int read_file(FILE *fpc)
 	char *line = NULL;
 	size_t size_line = 0;
 	ssize_t read;
-
 	while ((read = getline(&line, &size_line, fpc)) != -1)
 	{
 		token_line(line);
@@ -41,12 +40,33 @@ int read_file(FILE *fpc)
 
 void token_line(char *line)
 {
-	char *token;
+	char *token, *value;
+	int i;
+	stack_t *top = NULL;
 
-	token = strtok(line, " \t\n");
+	instruction_t ops[]={
+		{"push", push_element},
+		{NULL, NULL}
+	};
+
+	token = strtok(line, " \t");
 	while (token)
 	{
-		printf("token: %s\n", token);
+		i = 0;
+		while (ops[i].opcode)
+		{
+			if (strcmp(token, ops[i].opcode) == 0)
+			{
+				value = strtok(NULL, " \t");
+				if (value)
+				{
+					ops[i].f(&top, atoi(value));
+					free(top);
+					break;
+				}
+			}
+			i++;
+		}
 		token = strtok(NULL, " \t\n");
 	}
 }

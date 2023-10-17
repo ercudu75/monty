@@ -36,9 +36,11 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void push_element(stack_t **top, int value);
+/* fucntions that read the content of the file*/
 int read_file(FILE *fpc);
 void token_line(char *line);
 
+/* stack fucntions*/
+void push_element(stack_t **top, unsigned int value);
 
 #endif
