@@ -80,6 +80,7 @@ int read_file(FILE *fpc, stack_t **top)
  * This function tokenizes the input line, identifies
  * stack operations, and executes
  * the corresponding functions with their values on the stack.
+ * Return: succes or fail
  */
 int token_line(char *line, stack_t **top)
 {
