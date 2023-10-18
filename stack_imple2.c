@@ -21,6 +21,12 @@ void pop_element(stack_t **top, unsigned int value)
 	free(*top);
 	*top = temp;
 }
+/**
+ * swap_element - Swaps the top two elements of the stack.
+ * @top: Pointer to the top of the stack.
+ * @value: Unused parameter (required by function pointer type).
+ *
+ */
 void swap_element(stack_t **top, unsigned int value)
 {
 	stack_t *temp;
