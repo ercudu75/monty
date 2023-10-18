@@ -46,3 +46,13 @@ void swap_element(stack_t **top, unsigned int value)
 		temp->n = temp_value;
 	}
 }
+/**
+ * nop_element - Does nothing.
+ * @top: Pointer to the top of the stack.
+ * @value: Unused parameter (required by function pointer type).
+ */
+void nop_element(stack_t **top, unsigned int value)
+{
+	(void)top;
+	(void)value;
+}
