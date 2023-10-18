@@ -125,6 +125,7 @@ instruction_t *init_ops(void)
 		{"pall", print_stack},
 		{"pint", print_top},
 		{"pop", pop_element},
+		{"swap", swap_element},
 		{NULL, NULL}
 	};
 	return (ops);

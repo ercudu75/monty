@@ -21,3 +21,22 @@ void pop_element(stack_t **top, unsigned int value)
 	free(*top);
 	*top = temp;
 }
+void swap_element(stack_t **top, unsigned int value)
+{
+	stack_t *temp;
+	int temp_value;
+	(void)value;
+
+	if (!*top || !(*top)->next)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short", line_number);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		temp = (*top)->next;
+		temp_value = (*top)->n;
+		(*top)->n = temp->n;
+		temp->n = temp_value;
+	}
+}
