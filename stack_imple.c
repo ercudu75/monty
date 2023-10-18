@@ -13,8 +13,8 @@ void push_element(stack_t **top, unsigned int value)
 
 	if (!value)
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_stack(*top);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	if (!new_node)
@@ -62,6 +62,26 @@ void print_stack(stack_t **top, unsigned int value)
 			printf("%d\n", temp->n);
 			temp = temp->next;
 		}
+	}
+}
+/**
+ * print_top - Prints the value at the top of the stack.
+ * @top: Pointer to the top of the stack.
+ * @value: Unused parameter (required by function pointer type).
+ *
+ */
+void print_top(stack_t **top, unsigned int value)
+{
+	(void)value;
+
+	if (!(*top))
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		return;
+	}
+	else
+	{
+		printf("%d\n", (*top)->n);
 	}
 }
 /**

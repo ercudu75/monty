@@ -48,6 +48,7 @@ void token_line(char *line, stack_t **top);
 /* stack fucntions*/
 void push_element(stack_t **top, unsigned int value);
 void print_stack(stack_t **top, unsigned int value);
+void print_top(stack_t **top, unsigned int value);
 void free_stack(stack_t *top);
 
 

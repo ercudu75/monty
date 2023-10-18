@@ -81,6 +81,7 @@ void token_line(char *line, stack_t **top)
 	instruction_t ops[] = {
 		{"push", push_element},
 		{"pall", print_stack},
+		{"pint", print_top},
 		{NULL, NULL}
 	};
 	size_t len = strlen(line);
