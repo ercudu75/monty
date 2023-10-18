@@ -93,6 +93,8 @@ int token_line(char *line, stack_t **top)
 		line[len - 1] = '\0';
 	}
 	token = strtok(line, " \t");
+	if (token == NULL)
+		return (1);
 	i = 0;
 	while (ops[i].opcode)
 	{
