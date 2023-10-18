@@ -1,6 +1,7 @@
 #include "monty.h"
 
 unsigned int line_number = 0;
+
 /**
  * main - Entry point for the Monty bytecode interpreter.
  * @argc: Number of command-line arguments.
@@ -29,8 +30,9 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	read_file(fpc, top);
+	read_file(fpc, &top);
 	fclose(fpc);
+	free_stack(top);
 	return (0);
 }
 /**
@@ -45,7 +47,7 @@ int main(int argc, char *argv[])
  *
  * Return: Always 0.
  */
-int read_file(FILE *fpc, stack_t *top)
+int read_file(FILE *fpc, stack_t **top)
 {
 	char *line = NULL;
 	size_t size_line = 0;
@@ -54,7 +56,7 @@ int read_file(FILE *fpc, stack_t *top)
 	while ((read = getline(&line, &size_line, fpc)) != -1)
 	{
 		line_number++;
-		token_line(line, &top);
+		token_line(line, top);
 		free(line);
 		line = NULL;
 		size_line = 0;
