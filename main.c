@@ -1,6 +1,5 @@
 #include "monty.h"
 
-int line_number;
 
 int main(int argc, char *argv[])
 {
@@ -9,13 +8,13 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		fprintf(stderr,"USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	fpc = fopen(argv[1], "r");
 	if (!fpc)
 	{
-		fprintf(stderr,"Error: Can't open file %s\n", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	read_file(fpc, top);
@@ -24,9 +23,11 @@ int main(int argc, char *argv[])
 }
 int read_file(FILE *fpc, stack_t *top)
 {
+	int line_number;
 	char *line = NULL;
 	size_t size_line = 0;
 	ssize_t read;
+
 	while ((read = getline(&line, &size_line, fpc)) != -1)
 	{
 		line_number++;
@@ -44,16 +45,17 @@ void token_line(char *line, stack_t **top)
 	char *token, *value;
 	int i;
 
-	instruction_t ops[]={
+	instruction_t ops[] = {
 		{"push", push_element},
 		{"pall", print_stack},
 		{NULL, NULL}
 	};
 	size_t len = strlen(line);
-    if (len > 0 && line[len - 1] == '\n')
-    {
-        line[len - 1] = '\0';
-    }
+
+	if (len > 0 && line[len - 1] == '\n')
+	{
+		line[len - 1] = '\0';
+	}
 
 	token = strtok(line, " \t");
 	while (token)
