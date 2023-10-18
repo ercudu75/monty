@@ -11,15 +11,17 @@ void pop_element(stack_t **top, unsigned int value)
 	stack_t *temp;
 	(void)value;
 
-	temp = *top;
 	if (!(*top))
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack", line_number);
 		exit(EXIT_FAILURE);
 	}
+	temp = *top;
 	temp = temp->next;
 	free(*top);
 	*top = temp;
+	if (*top)
+		(*top)->prev = NULL;
 }
 /**
  * swap_element - Swaps the top two elements of the stack.

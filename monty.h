@@ -43,7 +43,7 @@ extern unsigned int line_number;
 
 /* fucntions that read the content of the file*/
 int read_file(FILE *fpc, stack_t **top);
-void token_line(char *line, stack_t **top);
+int token_line(char *line, stack_t **top);
 instruction_t *init_ops(void);
 
 /* stack fucntions*/

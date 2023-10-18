@@ -52,11 +52,18 @@ int read_file(FILE *fpc, stack_t **top)
 	char *line = NULL;
 	size_t size_line = 0;
 	ssize_t read;
+	int status;
 
 	while ((read = getline(&line, &size_line, fpc)) != -1)
 	{
 		line_number++;
-		token_line(line, top);
+		status = token_line(line, top);
+		if (status == -1)
+		{
+			fclose(fpc);
+			free(line);
+			exit(EXIT_FAILURE);
+		}
 		free(line);
 		line = NULL;
 		size_line = 0;
@@ -74,7 +81,7 @@ int read_file(FILE *fpc, stack_t **top)
  * stack operations, and executes
  * the corresponding functions with their values on the stack.
  */
-void token_line(char *line, stack_t **top)
+int token_line(char *line, stack_t **top)
 {
 	char *token, *value;
 	int i;
@@ -86,29 +93,33 @@ void token_line(char *line, stack_t **top)
 		line[len - 1] = '\0';
 	}
 	token = strtok(line, " \t");
-	while (token)
+	i = 0;
+	while (ops[i].opcode)
 	{
-		i = 0;
-		while (ops[i].opcode)
+		if (strcmp(token, ops[i].opcode) == 0)
 		{
-			if (strcmp(token, ops[i].opcode) == 0)
+			value = strtok(NULL, " \t");
+			/* return ops[i].f*/
+			if (value)
 			{
-				value = strtok(NULL, " \t");
-				if (value)
-				{
-					ops[i].f(top, atoi(value));
-					break;
-				}
-				else
-				{
-					ops[i].f(top, 0);
-					break;
-				}
+				ops[i].f(top, atoi(value));
+				return (0);
 			}
-			i++;
+			else if (strcmp(ops[i].opcode, "push") == 0 && !value)
+			{
+				free_stack(*top);
+				fprintf(stderr, "L%d: can't push an empty value", line_number);
+				return (-1);
+			}
+			else
+			{
+				ops[i].f(top, 0);
+				return (0);
+			}
 		}
-		token = strtok(NULL, " \t\n");
+		i++;
 	}
+	return (1);
 }
 /**
  * init_ops - Initializes the array of operations.

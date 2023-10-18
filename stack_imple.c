@@ -14,7 +14,6 @@ void push_element(stack_t **top, unsigned int value)
 	if (!value)
 	{
 		free(new_node);
-		free_stack(*top);
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
