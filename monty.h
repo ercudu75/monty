@@ -35,12 +35,14 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+extern int n;
 
 /* fucntions that read the content of the file*/
-int read_file(FILE *fpc);
-void token_line(char *line);
+int read_file(FILE *fpc, stack_t *top);
+void token_line(char *line, stack_t **top);
 
 /* stack fucntions*/
 void push_element(stack_t **top, unsigned int value);
+void print_stack(stack_t **top, unsigned int value);
 
 #endif
