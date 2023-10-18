@@ -20,7 +20,7 @@ void push_element(stack_t **top, unsigned int value)
 	}
 	if (!new_node)
 	{
-		fprintf(stderr, "Stack Overflow\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	new_node->n = value;
