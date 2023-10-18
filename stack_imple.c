@@ -13,6 +13,7 @@ void push_element(stack_t **top, unsigned int value)
 
 	if (!value)
 	{
+		free(new_node);
 		free_stack(*top);
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
@@ -49,19 +50,11 @@ void print_stack(stack_t **top, unsigned int value)
 	stack_t *temp;
 	(void)value;
 
-	if (!(*top))
+	temp = *top;
+	while (temp)
 	{
-		fprintf(stderr, "Stack underflow\n");
-		return;
-	}
-	else
-	{
-		temp = *top;
-		while (temp)
-		{
-			printf("%d\n", temp->n);
-			temp = temp->next;
-		}
+		printf("%d\n", temp->n);
+		temp = temp->next;
 	}
 }
 /**

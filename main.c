@@ -78,12 +78,7 @@ void token_line(char *line, stack_t **top)
 {
 	char *token, *value;
 	int i;
-	instruction_t ops[] = {
-		{"push", push_element},
-		{"pall", print_stack},
-		{"pint", print_top},
-		{NULL, NULL}
-	};
+	instruction_t *ops = init_ops();
 	size_t len = strlen(line);
 
 	if (len > 0 && line[len - 1] == '\n')
@@ -114,4 +109,23 @@ void token_line(char *line, stack_t **top)
 		}
 		token = strtok(NULL, " \t\n");
 	}
+}
+/**
+ * init_ops - Initializes the array of operations.
+ *
+ * This function creates and returns an array of instruction_t
+ * structures, each containing an opcode and its corresponding function.
+ *
+ * Return: Array of operations.
+ */
+instruction_t *init_ops(void)
+{
+	static instruction_t ops[] = {
+		{"push", push_element},
+		{"pall", print_stack},
+		{"pint", print_top},
+		{"pop", pop_element},
+		{NULL, NULL}
+	};
+	return (ops);
 }

@@ -44,11 +44,13 @@ extern unsigned int line_number;
 /* fucntions that read the content of the file*/
 int read_file(FILE *fpc, stack_t **top);
 void token_line(char *line, stack_t **top);
+instruction_t *init_ops(void);
 
 /* stack fucntions*/
 void push_element(stack_t **top, unsigned int value);
 void print_stack(stack_t **top, unsigned int value);
 void print_top(stack_t **top, unsigned int value);
+void pop_element(stack_t **top, unsigned int value);
 void free_stack(stack_t *top);
 
 
