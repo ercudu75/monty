@@ -1,2 +1,3 @@
 push 4
-push p
+pall
+push

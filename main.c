@@ -1,6 +1,18 @@
 #include "monty.h"
 
-
+unsigned int line_number = 0;
+/**
+ * main - Entry point for the Monty bytecode interpreter.
+ * @argc: Number of command-line arguments.
+ * @argv: Array of command-line argument strings.
+ *
+ * This function initializes the interpreter, reads the Monty
+ * bytecode from
+ * the specified file, and executes the corresponding
+ * operations.
+ *
+ * Return: Always 0 on success.
+ */
 int main(int argc, char *argv[])
 {
 	FILE *fpc;
@@ -21,9 +33,20 @@ int main(int argc, char *argv[])
 	fclose(fpc);
 	return (0);
 }
+/**
+ * read_file - Reads Monty bytecode from a file and executes
+ * corresponding operations.
+ * @fpc: Pointer to the FILE structure of the Monty bytecode file.
+ * @top: Pointer to the top of the stack.
+ *
+ * This function reads each line from the Monty bytecode file,
+ * processes it into
+ * tokens, and executes the corresponding stack operations.
+ *
+ * Return: Always 0.
+ */
 int read_file(FILE *fpc, stack_t *top)
 {
-	int line_number;
 	char *line = NULL;
 	size_t size_line = 0;
 	ssize_t read;
@@ -39,12 +62,20 @@ int read_file(FILE *fpc, stack_t *top)
 	free(line);
 	return (0);
 }
-
+/**
+ * token_line - Processes a line of tokens representing
+ * stack operations.
+ * @line: Input line containing space/tab-separated tokens.
+ * @top: Pointer to the top of the stack.
+ *
+ * This function tokenizes the input line, identifies
+ * stack operations, and executes
+ * the corresponding functions with their values on the stack.
+ */
 void token_line(char *line, stack_t **top)
 {
 	char *token, *value;
 	int i;
-
 	instruction_t ops[] = {
 		{"push", push_element},
 		{"pall", print_stack},
@@ -56,7 +87,6 @@ void token_line(char *line, stack_t **top)
 	{
 		line[len - 1] = '\0';
 	}
-
 	token = strtok(line, " \t");
 	while (token)
 	{

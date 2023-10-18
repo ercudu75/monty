@@ -1,5 +1,9 @@
 #ifndef MONTY_H
 #define MONTY_H
+
+#define _POSIX_C_SOURCE 200809L
+#define _GNU_SOURCE
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<stddef.h>
@@ -35,7 +39,7 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-extern int n;
+extern unsigned int line_number;
 
 /* fucntions that read the content of the file*/
 int read_file(FILE *fpc, stack_t *top);
