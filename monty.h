@@ -41,12 +41,6 @@ typedef struct instruction_s
 } instruction_t;
 extern unsigned int line_number;
 
-typedef struct errorhandler
-{
-	FILE *fpc;
-	char *line;
-} extern_var_t;
-extern extern_var_t fail;
 
 /* fucntions that read the content of the file*/
 int read_file(FILE *fpc, stack_t **top);
@@ -67,8 +61,6 @@ void op_add(stack_t **top, unsigned int line_number);
 void op_sub(stack_t **top, unsigned int line_number);
 void op_mul(stack_t **top, unsigned int value);
 void op_div(stack_t **top, unsigned int value);
-
-void cleanup_and_exit(const char *error_message);
 
 
 
