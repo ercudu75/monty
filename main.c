@@ -146,6 +146,7 @@ instruction_t *init_ops(void)
 		{"add", op_add},
 		{"sub", op_sub},
 		{"mul", op_mul},
+		{"div", op_div},
 		{NULL, NULL}
 	};
 	return (ops);

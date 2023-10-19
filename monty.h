@@ -59,6 +59,6 @@ void free_stack(stack_t *top);
 void op_add(stack_t **top, unsigned int line_number);
 void op_sub(stack_t **top, unsigned int line_number);
 void op_mul(stack_t **top, unsigned int value);
-
+void op_div(stack_t **top, unsigned int value);
 
 #endif
