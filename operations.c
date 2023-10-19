@@ -16,9 +16,11 @@ void op_add(stack_t **top, unsigned int value)
 		exit(EXIT_FAILURE);
 	}
 
-	val = (*top)->n + (*top)->next->n;
-	(*top)->next->n = val;
-	pop_element(top, value);
+	(*top) = (*top)->next;
+	val = (*top)->n + (*top)->prev->n;
+	(*top)->n = val;
+	free((*top)->prev);
+	(*top)->prev = NULL;
 }
 
 void op_sub(stack_t **top, unsigned int value)
@@ -36,3 +38,19 @@ void op_sub(stack_t **top, unsigned int value)
 	(*top)->next->n = val;
 	pop_element(top, value);
 }
+
+/**void op_mul(stack_t **top, unsigned int value)
+{
+	int val;
+	(void)value;
+
+	if (!top || !(*top) || !((*top)->next))
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	val = (*top)->n * (*top)->next->n;
+	(*top)->next->n = val;
+	pop_element(top, value);
+}*/
