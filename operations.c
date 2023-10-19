@@ -16,11 +16,9 @@ void op_add(stack_t **top, unsigned int value)
 		exit(EXIT_FAILURE);
 	}
 
-	(*top) = (*top)->next;
-	val = (*top)->n + (*top)->prev->n;
-	(*top)->n = val;
-	free((*top)->prev);
-	(*top)->prev = NULL;
+	val = (*top)->next->n - (*top)->n;
+	(*top)->next->n = val;
+	pop_element(top, value);
 }
 
 void op_sub(stack_t **top, unsigned int value)
@@ -34,11 +32,9 @@ void op_sub(stack_t **top, unsigned int value)
 		exit(EXIT_FAILURE);
 	}
 
-	(*top) = (*top)->next;
-	val = (*top)->n - (*top)->prev->n;
-	(*top)->n = val;
-	free((*top)->prev);
-	(*top)->prev = NULL;
+	val = (*top)->next->n - (*top)->n;
+	(*top)->next->n = val;
+	pop_element(top, value);
 }
 
 /**void op_mul(stack_t **top, unsigned int value)
