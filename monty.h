@@ -54,7 +54,7 @@ void pop_element(stack_t **top, unsigned int value);
 void swap_element(stack_t **top, unsigned int value);
 void nop_element(stack_t **top, unsigned int value);
 void free_stack(stack_t *top);
-
+/* operation functions*/
 void op_add(stack_t **top, unsigned int value);
 
 
