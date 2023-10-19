@@ -50,7 +50,7 @@ void test_free_stack(stack_t *top)
     while (top)
     {
         tmp = top->next;
-        free(top);
+        free(tmp);
         top = tmp;
     }
 }
