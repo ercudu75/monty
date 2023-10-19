@@ -143,6 +143,7 @@ instruction_t *init_ops(void)
 		{"swap", swap_element},
 		{"nop", nop_element},
 		{"add", op_add},
+		{"sub", op_sub},
 		{NULL, NULL}
 	};
 	return (ops);
