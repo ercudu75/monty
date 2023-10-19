@@ -66,7 +66,7 @@ void print_top(stack_t **top, unsigned int value)
 {
 	(void)value;
 
-	if (!(*top))
+	if (!(*top) || !((*top)->next))
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		return;
