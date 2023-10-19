@@ -9,7 +9,7 @@
  */
 void op_div(stack_t **top, unsigned int value)
 {
-	stack_t *temp;
+	int val;
 	(void)value;
 
 	if (!(*top) || !(*top)->next)
@@ -23,9 +23,9 @@ void op_div(stack_t **top, unsigned int value)
 		fprintf(stderr, "L%d: division by zero", line_number);
 		exit(EXIT_FAILURE);
 	}
-	temp = (*top)->next;
-	temp->n = temp->n / (*top)->n;
-	(*top) = temp;
-	free(temp->prev);
-	temp->prev = NULL;
+	val = (*top)->next->n * (*top)->n;
+	(*top)->next->n = val;
+	pop_element(top, value);
 }
+
+

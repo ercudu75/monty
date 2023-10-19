@@ -141,7 +141,6 @@ instruction_t *init_ops(void)
 		{"pint", print_top},
 		{"pop", pop_element},
 		{"swap", swap_element},
-		{"swap", swap_element},
 		{"nop", nop_element},
 		{"add", op_add},
 		{"sub", op_sub},
