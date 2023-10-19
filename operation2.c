@@ -56,3 +56,27 @@ void op_mod(stack_t **top, unsigned int value)
 	free(temp->prev);
 	temp->prev = NULL;
 }
+/**
+ * op_pchar - Prints the char at the top of the stack,
+ * followed by a new line.
+ * @top: Double pointer to the top of the stack.
+ * @value: The value to be printed (not used).
+ *
+ */
+void op_pchar(stack_t **top, unsigned int value)
+{
+	(void)value;
+
+	if (!(*top))
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((*top)->n < 0 || (*top)->n > 128)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range", line_number);
+		exit(EXIT_FAILURE);
+	}
+	putchar((*top)->n);
+	putchar('\n');
+}

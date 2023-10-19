@@ -62,6 +62,7 @@ void op_sub(stack_t **top, unsigned int line_number);
 void op_mul(stack_t **top, unsigned int value);
 void op_div(stack_t **top, unsigned int value);
 void op_mod(stack_t **top, unsigned int value);
+void op_pchar(stack_t **top, unsigned int value);
 
 
 
