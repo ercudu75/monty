@@ -13,7 +13,7 @@ void op_add(stack_t **top, unsigned int value)
 	if (!top || !(*top) || !((*top)->next))
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
-		free(*top);
+		test_free_stack(*top);
 		exit(EXIT_FAILURE);
 	}
 
@@ -30,7 +30,7 @@ void op_sub(stack_t **top, unsigned int value)
 	if (!top || !(*top) || !((*top)->next))
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
-		free(*top);
+		test_free_stack(*top);
 		exit(EXIT_FAILURE);
 	}
 
@@ -38,3 +38,20 @@ void op_sub(stack_t **top, unsigned int value)
 	(*top)->next->n = val;
 	pop_element(top, value);
 }
+
+
+void test_free_stack(stack_t *top)
+{
+    stack_t *tmp;
+
+    if (!top)
+        return;
+
+    while (top)
+    {
+        tmp = top->next;
+        free(top);
+        top = tmp;
+    }
+}
+

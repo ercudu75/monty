@@ -58,6 +58,7 @@ void free_stack(stack_t *top);
 /* operation functions*/
 void op_add(stack_t **top, unsigned int value);
 void op_sub(stack_t **top, unsigned int value);
+void test_free_stack(stack_t *top);
 
 
 #endif
