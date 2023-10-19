@@ -37,7 +37,7 @@ void op_sub(stack_t **top, unsigned int value)
 	pop_element(top, value);
 }
 
-/**void op_mul(stack_t **top, unsigned int value)
+void op_mul(stack_t **top, unsigned int value)
 {
 	int val;
 	(void)value;
@@ -51,4 +51,4 @@ void op_sub(stack_t **top, unsigned int value)
 	val = (*top)->n * (*top)->next->n;
 	(*top)->next->n = val;
 	pop_element(top, value);
-}*/
+}
