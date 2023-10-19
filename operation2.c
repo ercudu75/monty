@@ -29,5 +29,30 @@ void op_div(stack_t **top, unsigned int value)
 	free(temp->prev);
 	temp->prev = NULL;
 }
-
-
+/**
+ * op_mod - Computes the remainder of the division of
+ * the second top element
+ * of the stack by the top element.
+ * @top: Double pointer to the top of the stack.
+ * @value: The value to be used (not used in this function).
+ */
+void op_mod(stack_t **top, unsigned int value)
+{
+	stack_t *temp;
+	(void)value;
+	if (!(*top) || !(*top)->next)
+	{
+		fprintf(stderr, "L%d: can't mod, stack too short", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((*top)->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero", line_number);
+		exit(EXIT_FAILURE);
+	}
+	temp = (*top)->next;
+	temp->n = temp->n % (*top)->n;
+	(*top) = temp;
+	free(temp->prev);
+	temp->prev = NULL;
+}
