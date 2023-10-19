@@ -14,8 +14,8 @@ void op_div(stack_t **top, unsigned int value)
 
 	if (!(*top) || !(*top)->next)
 	{
-		fprintf(stderr, "L%d: can't div, stack too short", line_number);
-		exit(EXIT_FAILURE);
+		free_stack(*top);
+		cleanup_and_exit("L%d: can't div, stack too short");
 	}
 	if ((*top)->n == 0)
 	{

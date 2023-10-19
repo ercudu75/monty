@@ -1,6 +1,7 @@
 #include "monty.h"
 
 unsigned int line_number = 0;
+extern_var_t fail;
 
 /**
  * main - Entry point for the Monty bytecode interpreter.
@@ -57,6 +58,8 @@ int read_file(FILE *fpc, stack_t **top)
 	while ((read = getline(&line, &size_line, fpc)) != -1)
 	{
 		line_number++;
+		fail.line = line;
+		fail.fpc = fpc;
 		status = token_line(line, top);
 		if (status == -1)
 		{
