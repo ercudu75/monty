@@ -79,6 +79,6 @@ void op_rotl(stack_t **top, unsigned int value)
     tmp->next = *top;
     (*top)->prev = tmp;
     *top = (*top)->next;
-    (*top)->prev = NULL;
-    tmp->next = NULL;
+    (*top)->prev->next = NULL;
+    tmp->prev = NULL;
 }
