@@ -63,7 +63,7 @@ void op_mul(stack_t **top, unsigned int value);
 void op_div(stack_t **top, unsigned int value);
 void op_mod(stack_t **top, unsigned int value);
 void op_pchar(stack_t **top, unsigned int value);
-void op_pstr(stack_t **stack, unsigned int value);
+void op_pstr(stack_t **top, unsigned int value);
 
 
 
