@@ -80,3 +80,28 @@ void op_pchar(stack_t **top, unsigned int value)
 	putchar((*top)->n);
 	putchar('\n');
 }
+
+
+void op_pstr(stack_t **head, unsigned int value)
+{
+	int idx;
+	stack_t *tmp;
+	(void)value;
+
+	if (head == NULL || *head == NULL)
+	{
+		printf("\n");
+		return;
+	}
+
+	tmp = *head;
+	while (tmp != NULL)
+	{
+		idx = tmp->n;
+		if (idx < 0 || idx > 127)
+			break;
+		putchar(idx);
+		tmp = tmp->next;
+	}
+	putchar('\n');
+}

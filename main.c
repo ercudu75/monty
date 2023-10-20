@@ -148,6 +148,7 @@ instruction_t *init_ops(void)
 		{"div", op_div},
 		{"mod", op_mod},
 		{"pchar", op_pchar},
+		{"pstr", op_pstr},
 		{NULL, NULL}
 	};
 	return (ops);
