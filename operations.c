@@ -63,22 +63,27 @@ void op_mul(stack_t **top, unsigned int value)
 	pop_element(top, value);
 }
 
+/**
+ * op_rotl - Rotates the stack to the top.
+ * @top: Pointer to the top of the stack.
+ * @value: Unused parameter.
+ */
 void op_rotl(stack_t **top, unsigned int value)
 {
-    stack_t *tmp;
+	stack_t *tmp;
 	(void)value;
 
-    if (!top || !*top || !(*top)->next)
-        return;
+	if (!top || !*top || !(*top)->next)
+		return;
 
-    tmp = *top;
+	tmp = *top;
 
-    while (tmp->next != NULL)
-        tmp = tmp->next;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
 
-    tmp->next = *top;
-    (*top)->prev = tmp;
-    *top = (*top)->next;
-    (*top)->prev->next = NULL;
-    tmp->prev = NULL;
+	tmp->next = *top;
+	(*top)->prev = tmp;
+	*top = (*top)->next;
+	(*top)->prev->next = NULL;
+	tmp->prev = NULL;
 }

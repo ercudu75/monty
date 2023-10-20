@@ -83,7 +83,7 @@ void op_pchar(stack_t **top, unsigned int value)
 
 /**
  * op_pstr - Prints a string from the stack as ASCII characters.
- * @head: Pointer to the top of the stack.
+ * @top: Pointer to the top of the stack.
  * @value: Unused parameter.
  */
 void op_pstr(stack_t **top, unsigned int value)
