@@ -86,19 +86,19 @@ void op_pchar(stack_t **top, unsigned int value)
  * @head: Pointer to the top of the stack.
  * @value: Unused parameter.
  */
-void op_pstr(stack_t **head, unsigned int value)
+void op_pstr(stack_t **top, unsigned int value)
 {
 	int idx;
 	stack_t *tmp;
 	(void)value;
 
-	if (head == NULL || *head == NULL)
+	if (top == NULL || *top == NULL)
 	{
 		printf("\n");
 		return;
 	}
 
-	tmp = *head;
+	tmp = *top;
 	while (tmp != NULL)
 	{
 		idx = tmp->n;

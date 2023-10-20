@@ -62,3 +62,23 @@ void op_mul(stack_t **top, unsigned int value)
 	(*top)->next->n = val;
 	pop_element(top, value);
 }
+
+void op_rotl(stack_t **top, unsigned int value)
+{
+    stack_t *tmp;
+	(void)value;
+
+    if (!top || !*top || !(*top)->next)
+        return;
+
+    tmp = *top;
+
+    while (tmp->next != NULL)
+        tmp = tmp->next;
+
+    tmp->next = *top;
+    (*top)->prev = tmp;
+    *top = (*top)->next;
+    (*top)->prev = NULL;
+    tmp->next = NULL;
+}
